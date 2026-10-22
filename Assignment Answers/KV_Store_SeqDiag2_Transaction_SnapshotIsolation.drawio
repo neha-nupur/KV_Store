@@ -1,0 +1,304 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="SD2 - Execute Transaction (Snapshot-Isolated Commit)" id="sd2">
+    <mxGraphModel dx="2464" dy="485" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1360" pageHeight="1599" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="sd2_n1" parent="1" style="text;html=1;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#1F3864;" value="kvstore: A Distributed, Fault-Tolerant, Transactional Key-Value Store" vertex="1">
+          <mxGeometry height="30" width="1320" x="-15" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n2" parent="1" style="text;html=1;fontSize=13;fontStyle=2;align=center;verticalAlign=middle;fontColor=#444444;" value="Scenario 2 of 3  --  Execute Multi-Key Transaction with Snapshot Isolation   (SRS FR-024..034, FR-015, Sec. 7.2)" vertex="1">
+          <mxGeometry height="26" width="1320" x="-15" y="32" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n3" edge="1" parent="1" style="html=1;endArrow=block;endFill=1;startArrow=none;dashed=0;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;" value="begin()">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110" y="180" as="sourcePoint" />
+            <mxPoint x="320" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n4" edge="1" parent="1" style="html=1;endArrow=block;endFill=1;startArrow=none;dashed=0;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;" value="beginTransaction()">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="226" as="sourcePoint" />
+            <mxPoint x="530" y="226" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n5" edge="1" parent="1" style="html=1;endArrow=block;endFill=1;startArrow=none;dashed=0;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;" value="assignBeginTimestamp()   [FR024, uses HLC.now()]">
+          <mxGeometry relative="1" x="0.3333" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="530" y="266" as="sourcePoint" />
+            <mxPoint x="740" y="266" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n6" edge="1" parent="1" style="html=1;endArrow=open;endFill=0;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;" value="beginTimestamp">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="740" y="306" as="sourcePoint" />
+            <mxPoint x="530" y="306" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n7" edge="1" parent="1" style="html=1;endArrow=open;endFill=0;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;" value="transactionHandle(txnID)   [FR029]">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="346" as="sourcePoint" />
+            <mxPoint x="320" y="346" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n8" edge="1" parent="1" style="html=1;endArrow=open;endFill=0;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;" value="transactionHandle">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="386" as="sourcePoint" />
+            <mxPoint x="110" y="386" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n9" edge="1" parent="1" style="html=1;endArrow=block;endFill=1;startArrow=none;dashed=0;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;" value="get(key)  /  put(key, value)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="462" as="sourcePoint" />
+            <mxPoint x="530" y="462" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n10" edge="1" parent="1" style="html=1;endArrow=block;endFill=1;startArrow=none;dashed=0;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;readVersion(key, beginTs)  /  bufferWrite(key, value)   [FR025]&lt;/font&gt;">
+          <mxGeometry relative="1" x="0.6" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="530" y="502" as="sourcePoint" />
+            <mxPoint x="730" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n11" edge="1" parent="1" style="html=1;endArrow=open;endFill=0;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;" value="value (most recent version visible at beginTs)  /  buffered">
+          <mxGeometry relative="1" x="-0.4286" y="18" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="740" y="542" as="sourcePoint" />
+            <mxPoint x="530" y="542" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n12" edge="1" parent="1" style="html=1;endArrow=open;endFill=0;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;" value="result">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="582" as="sourcePoint" />
+            <mxPoint x="320" y="582" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n13" edge="1" parent="1" style="html=1;endArrow=block;endFill=1;startArrow=none;dashed=0;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;" value="commit(transactionHandle)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="646" as="sourcePoint" />
+            <mxPoint x="530" y="646" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n14" edge="1" parent="1" style="html=1;endArrow=block;endFill=1;startArrow=none;dashed=0;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;" value="optimisticPreCheck(writeSet)   [FR028 - fast local check]">
+          <mxGeometry relative="1" x="0.3333" y="2" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="530" y="692" as="sourcePoint" />
+            <mxPoint x="740" y="692" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n15" edge="1" parent="1" style="html=1;endArrow=open;endFill=0;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;" value="preCheckPassed">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="740" y="732" as="sourcePoint" />
+            <mxPoint x="530" y="732" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n16" edge="1" parent="1" style="html=1;endArrow=block;endFill=1;startArrow=none;dashed=0;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;" value="proposeWriteSet(logEntry)   [FR033]">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="778" as="sourcePoint" />
+            <mxPoint x="950" y="778" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n17" edge="1" parent="1" style="html=1;endArrow=block;endFill=1;startArrow=none;dashed=0;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;" value="replicateLogEntry(entry)   [FR015]">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="950" y="854" as="sourcePoint" />
+            <mxPoint x="1160" y="854" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n18" edge="1" parent="1" style="html=1;endArrow=open;endFill=0;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;" value="acknowledge (durably stored)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1160" y="894" as="sourcePoint" />
+            <mxPoint x="950" y="894" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n19" edge="1" parent="1" style="html=1;endArrow=open;endFill=0;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;" value="majorityAcknowledged --&gt; entryCommitted   [FR015]">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="950" y="958" as="sourcePoint" />
+            <mxPoint x="530" y="958" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n20" edge="1" parent="1" style="html=1;endArrow=block;endFill=1;startArrow=none;dashed=0;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;" value="deterministicApply(writeSet)   [FR027 - identical on every replica]">
+          <mxGeometry relative="1" x="0.7143" y="4" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="530" y="1034" as="sourcePoint" />
+            <mxPoint x="740" y="1034" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n21" edge="1" parent="1" style="html=1;endArrow=open;endFill=0;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;" value="committed  (first-committer-wins check passed, FR026)">
+          <mxGeometry relative="1" x="-0.5238" y="16" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="740" y="1074" as="sourcePoint" />
+            <mxPoint x="530" y="1074" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n22" edge="1" parent="1" style="html=1;endArrow=open;endFill=0;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;" value="transactionResult(success)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="1120" as="sourcePoint" />
+            <mxPoint x="320" y="1120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n23" edge="1" parent="1" style="html=1;endArrow=open;endFill=0;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;" value="success">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="1160" as="sourcePoint" />
+            <mxPoint x="110" y="1160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n24" edge="1" parent="1" style="html=1;endArrow=block;endFill=1;startArrow=none;dashed=0;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;" value="releaseIntents(txnID)   [FR031, abort path]">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="1230" as="sourcePoint" />
+            <mxPoint x="740" y="1230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n25" edge="1" parent="1" style="html=1;endArrow=open;endFill=0;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;entryX=0.757;entryY=0.889;entryDx=0;entryDy=0;entryPerimeter=0;" target="sd2_n39" value="transactionResult(aborted)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="1270" as="sourcePoint" />
+            <mxPoint x="320" y="1270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n26" edge="1" parent="1" style="html=1;endArrow=open;endFill=0;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;align=center;verticalAlign=bottom;strokeColor=#333333;fontColor=#222222;" value="aborted">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="1310" as="sourcePoint" />
+            <mxPoint x="110" y="1310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n27" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFF9E0;strokeColor=#B08B00;fontSize=10;fontStyle=2;align=left;verticalAlign=top;spacing=6;size=12;" value="Every replica applies the identical Raft log sequence and therefore performs the same first-committer-wins check and reaches the identical accept/abort outcome (FR027, FR084)." vertex="1">
+          <mxGeometry height="46" width="560" x="40" y="1430" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n28" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#444444;verticalAlign=top;" value="" vertex="1">
+          <mxGeometry height="348" width="820" x="435" y="988" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n29" parent="1" style="shape=singleArrow=0;rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#444444;fontStyle=1;fontSize=11;align=center;verticalAlign=middle;" value="alt" vertex="1">
+          <mxGeometry height="24" width="56" x="435" y="988" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n30" parent="1" style="text;html=1;fontSize=11;fontStyle=2;align=left;verticalAlign=middle;fontColor=#444444;" value="[no conflicting commit since beginTimestamp  --  first committer wins, FR026]" vertex="1">
+          <mxGeometry height="24" width="752" x="543" y="988" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n31" edge="1" parent="1" style="html=1;endArrow=none;startArrow=none;dashed=1;strokeColor=#444444;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="435" y="1190" as="sourcePoint" />
+            <mxPoint x="1255" y="1190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n32" parent="1" style="text;html=1;fontSize=11;fontStyle=2;align=left;verticalAlign=middle;fontColor=#444444;" value="[conflicting commit found since beginTimestamp  --  abort transaction, FR026]" vertex="1">
+          <mxGeometry height="22" width="804" x="443" y="1190" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n33" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#444444;verticalAlign=top;" value="" vertex="1">
+          <mxGeometry height="186" width="400" x="225" y="416" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n34" parent="1" style="shape=singleArrow=0;rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#444444;fontStyle=1;fontSize=11;align=center;verticalAlign=middle;" value="loop" vertex="1">
+          <mxGeometry height="24" width="56" x="225" y="416" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n35" parent="1" style="text;html=1;fontSize=11;fontStyle=2;align=left;verticalAlign=middle;fontColor=#444444;" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;[for each key read or written by the transaction]&lt;/font&gt;" vertex="1">
+          <mxGeometry height="24" width="332" x="326" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n36" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#444444;verticalAlign=top;" value="" vertex="1">
+          <mxGeometry height="106" width="400" x="855" y="808" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n37" parent="1" style="shape=singleArrow=0;rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#444444;fontStyle=1;fontSize=11;align=center;verticalAlign=middle;" value="loop" vertex="1">
+          <mxGeometry height="24" width="56" x="855" y="808" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n38" parent="1" style="text;html=1;fontSize=11;fontStyle=2;align=left;verticalAlign=middle;fontColor=#444444;" value="[for each follower node in the cluster]" vertex="1">
+          <mxGeometry height="24" width="332" x="956" y="784" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n39" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EDF3FB;strokeColor=#1F3864;" value="" vertex="1">
+          <mxGeometry height="1226" width="12" x="314" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n40" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EDF3FB;strokeColor=#1F3864;" value="" vertex="1">
+          <mxGeometry height="904" width="12" x="524" y="226" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n41" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EDF3FB;strokeColor=#1F3864;" value="" vertex="1">
+          <mxGeometry height="40" width="12" x="734" y="266" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n42" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EDF3FB;strokeColor=#1F3864;" value="" vertex="1">
+          <mxGeometry height="40" width="12" x="734" y="502" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n43" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EDF3FB;strokeColor=#1F3864;" value="" vertex="1">
+          <mxGeometry height="40" width="12" x="734" y="692" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n44" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EDF3FB;strokeColor=#1F3864;" value="" vertex="1">
+          <mxGeometry height="40" width="12" x="734" y="1034" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n45" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EDF3FB;strokeColor=#1F3864;" value="" vertex="1">
+          <mxGeometry height="40" width="12" x="734" y="1230" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n46" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EDF3FB;strokeColor=#1F3864;" value="" vertex="1">
+          <mxGeometry height="136" width="12" x="944" y="778" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n47" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EDF3FB;strokeColor=#1F3864;" value="" vertex="1">
+          <mxGeometry height="40" width="12" x="1154" y="854" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n48" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4F6FA;strokeColor=#1F3864;verticalAlign=top;align=left;fontSize=11;spacing=10;arcSize=4;" value="" vertex="1">
+          <mxGeometry height="118" width="1300" x="-5" y="1488" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n49" parent="1" style="text;html=1;fontSize=12;fontStyle=1;align=left;verticalAlign=middle;fontColor=#1F3864;" value="Actors, Lifelines &amp; Messages  (for viva)" vertex="1">
+          <mxGeometry height="20" width="1272" x="9" y="1494" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n50" parent="1" style="text;html=1;fontSize=10.5;align=left;verticalAlign=top;fontColor=#222222;" value="Actor(s):  Client Application (end user / calling program)" vertex="1">
+          <mxGeometry height="18" width="1272" x="9" y="1516" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n51" parent="1" style="text;html=1;fontSize=10.5;align=left;verticalAlign=top;fontColor=#222222;" value="Lifelines (objects):  ClientLibrary, ClusterNode (leader), MVCCVersionStore, RaftCluster, ClusterNode (follower)" vertex="1">
+          <mxGeometry height="18" width="1272" x="9" y="1536" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n52" parent="1" style="text;html=1;fontSize=10.5;align=left;verticalAlign=top;fontColor=#222222;" value="Key messages:  begin(); get()/put(); commit(); optimisticPreCheck(); proposeWriteSet(); replicateLogEntry(); deterministicApply()" vertex="1">
+          <mxGeometry height="18" width="1272" x="9" y="1556" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n53" parent="1" style="text;html=1;fontSize=10.5;align=left;verticalAlign=top;fontColor=#222222;fontStyle=2;" value="alt / loop usage:  loop replays the read/write set and, separately, replicates to every follower (FR015); alt applies the authoritative, replica-identical first-committer-wins outcome (FR026-027)." vertex="1">
+          <mxGeometry height="24" width="1272" x="9" y="1578" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n54" edge="1" parent="1" style="html=1;endArrow=none;startArrow=none;dashed=1;strokeColor=#6c8ebf;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110" y="142" as="sourcePoint" />
+            <mxPoint x="110" y="1559" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n55" edge="1" parent="1" style="html=1;endArrow=none;startArrow=none;dashed=1;strokeColor=#6c8ebf;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="142" as="sourcePoint" />
+            <mxPoint x="320" y="1559" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n56" edge="1" parent="1" style="html=1;endArrow=none;startArrow=none;dashed=1;strokeColor=#6c8ebf;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="142" as="sourcePoint" />
+            <mxPoint x="530" y="1559" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n57" edge="1" parent="1" style="html=1;endArrow=none;startArrow=none;dashed=1;strokeColor=#6c8ebf;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="740" y="142" as="sourcePoint" />
+            <mxPoint x="740" y="1559" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n58" edge="1" parent="1" style="html=1;endArrow=none;startArrow=none;dashed=1;strokeColor=#6c8ebf;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="950" y="142" as="sourcePoint" />
+            <mxPoint x="950" y="1559" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n59" edge="1" parent="1" style="html=1;endArrow=none;startArrow=none;dashed=1;strokeColor=#6c8ebf;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1160" y="142" as="sourcePoint" />
+            <mxPoint x="1160" y="1559" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sd2_n60" parent="1" style="shape=umlActor;whiteSpace=wrap;html=1;fillColor=#DCE6F1;strokeColor=#1F3864;fontStyle=1;fontSize=12;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=none;" value="Client Application" vertex="1">
+          <mxGeometry height="66" width="48" x="86" y="76" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n61" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DCE6F1;strokeColor=#1F3864;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;fontColor=#1F3864;" value=":ClientLibrary" vertex="1">
+          <mxGeometry height="42" width="170" x="235" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n62" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DCE6F1;strokeColor=#1F3864;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;fontColor=#1F3864;" value=":ClusterNode (Cluster Leader)" vertex="1">
+          <mxGeometry height="42" width="170" x="445" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n63" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DCE6F1;strokeColor=#1F3864;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;fontColor=#1F3864;" value=":MVCCVersionStore" vertex="1">
+          <mxGeometry height="42" width="170" x="655" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n64" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DCE6F1;strokeColor=#1F3864;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;fontColor=#1F3864;" value=":RaftCluster (replication)" vertex="1">
+          <mxGeometry height="42" width="170" x="865" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="sd2_n65" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DCE6F1;strokeColor=#1F3864;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;fontColor=#1F3864;" value=":ClusterNode (Follower)" vertex="1">
+          <mxGeometry height="42" width="170" x="1075" y="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
